@@ -51,16 +51,7 @@ jobs:
           npm --global install semantic-release@21 \
             conventional-changelog-conventionalcommits \
             @semantic-release/changelog \
-            @semantic-release/exec \
             @semantic-release/git
-
-      # so semantic-release/exec can find scripts
-      # https://docs.github.com/en/actions/using-workflows/workflow-commands-for-github-actions#adding-a-system-path
-      - name: Prepend Repository semrel-exec directories to PATH
-        run: |
-          chmod 755 $GITHUB_WORKSPACE/.github/semrel-exec/*
-          echo "$GITHUB_WORKSPACE/.github/semrel-exec" >> $GITHUB_PATH
-          echo "$GITHUB_WORKSPACE/bin" >> $GITHUB_PATH
 
       # these environment variables are set so that the next step can use them to
       # credit the actual doer for this release instead of crediting
